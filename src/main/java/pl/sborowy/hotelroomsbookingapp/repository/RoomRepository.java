@@ -17,9 +17,9 @@ public class RoomRepository {
 
     // --constructors--
     public RoomRepository() {
-        addRoom(new Room("1","2", 12.50));
-        addRoom(new Room("2","2", 12.50));
-        addRoom(new Room("3","4", 25.00));
+        addRoom(new Room("1", "2", 12.50));
+        addRoom(new Room("2", "2", 12.50));
+        addRoom(new Room("3", "4", 25.00));
     }
 
     // --public methods--
