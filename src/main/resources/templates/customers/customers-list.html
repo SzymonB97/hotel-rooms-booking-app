@@ -1,56 +1,78 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
     <title>Customers List</title>
 </head>
 <body>
-<div align="center">
+<div class="container" align="center">
 
-    <h2>Customers list</h2>
+    <h3 class="h3 mb-3">Rooms List</h3>
+    <hr>
+
     <!--Add button-->
-    <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.customer.CustomerMappings).CUSTOMER_FORM_SAVE}__}">
+    <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.customer.CustomerMappings).CUSTOMER_FORM_SAVE}__}"
+       class="btn btn-primary">
         Add Customer
     </a>
+    <hr>
 
-    <table border="2.5" cellpadding="5">
+    <table class="table table-striped table-hover">
+        <caption>Rooms list</caption>
 
-        <tr>
-            <th>Id</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Phone number</th>
-            <th>Actions</th>
-        </tr>
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
 
-        <tr th:each="customer : ${customers}">
-            <td th:align="center" th:text="${customer.id}">Id content</td>
-            <td th:align="center" th:text="${customer.firstName}">First name content</td>
-            <td th:align="center" th:text="${customer.lastName}">Last name content</td>
-            <td th:align="center" th:text="${customer.email}">Email content</td>
-            <td th:align="center" th:text="${customer.phoneNumber}">Phone number content</td>
-            <td>
-                <!--Info button-->
-                <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.customer.CustomerMappings).CUSTOMER_GET}__(customerId=${customer.id})}">
-                    Info
-                </a>
+        <tbody>
+            <tr th:each="customer : ${customers}">
+                <td th:align="center" th:text="${customer.id}">Id content</td>
+                <td th:align="center" th:text="${customer.firstName}">First name content</td>
+                <td th:align="center" th:text="${customer.lastName}">Last name content</td>
+                <td th:align="center" th:text="${customer.email}">Email content</td>
+                <td th:align="center" th:text="${customer.phoneNumber}">Phone number content</td>
+                <td>
 
-                <!--Update button-->
-                <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.customer.CustomerMappings).CUSTOMER_FORM_UPDATE}__(customerId=${customer.id})}">
-                    Update
-                </a>
+                    <!--Info button-->
+                    <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.customer.CustomerMappings).CUSTOMER_GET}__(customerId=${customer.id})}"
+                       class="btn btn-info">
+                        Info
+                    </a>
 
-                <!--Delete button-->
-                <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.customer.CustomerMappings).CUSTOMER_DELETE}__(customerId=${customer.id})}"
-                   onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">
-                    Delete
-                </a>
-            </td>
-        </tr>
+                    <!--Update button-->
+                    <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.customer.CustomerMappings).CUSTOMER_FORM_UPDATE}__(customerId=${customer.id})}"
+                       class="btn btn-warning">
+                        Update
+                    </a>
+
+                    <!--Delete button-->
+                    <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.customer.CustomerMappings).CUSTOMER_DELETE}__(customerId=${customer.id})}"
+                       onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false"
+                       class="btn btn-danger">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        </tbody>
     </table>
+    <hr>
 
-    <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.room.RoomMappings).ROOMS_LIST}__}">Go to Rooms List</a>
+    <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.room.RoomMappings).ROOMS_LIST}__}"
+       class="btn btn-link">Go to Rooms List</a>
 </div>
 </body>
 </html>

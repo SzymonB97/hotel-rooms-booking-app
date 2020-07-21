@@ -1,30 +1,47 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
     <title>Room Info</title>
 </head>
 <body>
-<div align="center">
-    <table border="2.5" cellpadding="5">
-        <caption><h2>Room info</h2></caption>
+<div class="container" align="center">
 
-        <tr>
-            <th>Id</th>
-            <th>Room number</th>
-            <th>People amount</th>
-            <th>Rental cost</th>
-        </tr>
+    <h3 class="h3 mb-3">Room Info</h3>
+    <hr>
 
-        <tr>
-            <td th:align="center" th:text="${room.id}">Id content</td>
-            <td th:align="center" th:text="${room.roomNumber}">Room number content</td>
-            <td th:align="center" th:text="${room.peopleAmount}">People amount content</td>
-            <td th:align="center" th:text="${room.rentalCost}">Rental cost content</td>
-        </tr>
+    <table class="table table-striped">
+        <caption>Room info</caption>
+
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Room number</th>
+                <th>People amount</th>
+                <th>Rental cost</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td th:align="center" th:text="${room.id}">Id content</td>
+                <td th:align="center" th:text="${room.roomNumber}">Room number content</td>
+                <td th:align="center" th:text="${room.peopleAmount}">People amount content</td>
+                <td th:align="center" th:text="${room.rentalCost}">Rental cost content</td>
+            </tr>
+        </tbody>
     </table>
+    <hr>
 
-    <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.room.RoomMappings).ROOMS_LIST}__}">Back to Rooms List</a>
+    <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.room.RoomMappings).ROOMS_LIST}__}"
+       class="btn btn-link">Back to Rooms List</a>
 </div>
 </body>
 </html>

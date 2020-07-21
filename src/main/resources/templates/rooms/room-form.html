@@ -1,29 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
     <title>Add/Update Room</title>
 </head>
 <body>
-<h3>Add/Update Room</h3>
+<div class="container" align="center">
 
-<form action="#" th:action="@{__${T(pl.sborowy.hotelroomsbookingapp.util.room.RoomMappings).ROOM_SAVE}__}"
-      th:object="${room}" method="post">
-    <!--Hidden id field to handle also updates-->
-    <input type="hidden" th:field="*{id}">
+    <h3 class="h3 mb-3">Add/Update Room</h3>
+    <hr>
 
-    <h4>Room number</h4>
-    <input type="text" th:field="*{roomNumber}" placeholder="Room number">
+    <form action="#"
+          th:action="@{__${T(pl.sborowy.hotelroomsbookingapp.util.room.RoomMappings).ROOM_SAVE}__}"
+          th:object="${room}" method="post">
 
-    <h4>People amount</h4>
-    <input type="number" th:field="*{peopleAmount}" placeholder="People amount">
+        <!--Hidden id field to handle also updates-->
+        <input type="hidden" th:field="*{id}">
 
-    <h4>Rental cost</h4>
-    <input type="number" step=".01" th:field="*{rentalCost}" placeholder="Rental cost">
+        <input type="text" th:field="*{roomNumber}"
+               class="form-control mb-4 col-4" placeholder="Room number">
 
-    <button type="submit">Save</button>
-</form>
+        <input type="number" th:field="*{peopleAmount}"
+               class="form-control mb-4 col-4" placeholder="People amount">
 
-<a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.room.RoomMappings).ROOMS_LIST}__}">Back to Rooms List</a>
+        <input type="number" step=".01" th:field="*{rentalCost}"
+               class="form-control mb-4 col-4" placeholder="Rental cost">
+
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
+    <hr>
+
+    <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.room.RoomMappings).ROOMS_LIST}__}"
+       class="btn btn-link">Back to Rooms List</a>
+</div>
 </body>
 </html>

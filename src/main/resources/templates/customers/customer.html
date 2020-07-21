@@ -1,32 +1,49 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
     <title>Customer Info</title>
 </head>
 <body>
-<div align="center">
-    <table border="2.5" cellpadding="5">
-        <caption><h2>Customer info</h2></caption>
+<div class="container" align="center">
 
-        <tr>
-            <th>Id</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Phone number</th>
-        </tr>
+    <h3 class="h3 mb-3">Customer Info</h3>
+    <hr>
 
-        <tr>
-            <td th:align="center" th:text="${customer.id}">Id content</td>
-            <td th:align="center" th:text="${customer.firstName}">First name content</td>
-            <td th:align="center" th:text="${customer.lastName}">Last name content</td>
-            <td th:align="center" th:text="${customer.email}">Email content</td>
-            <td th:align="center" th:text="${customer.phoneNumber}">Phone number content</td>
-        </tr>
+    <table class="table table-striped">
+        <caption>Customer info</caption>
+
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone number</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td th:align="center" th:text="${customer.id}">Id content</td>
+                <td th:align="center" th:text="${customer.firstName}">First name content</td>
+                <td th:align="center" th:text="${customer.lastName}">Last name content</td>
+                <td th:align="center" th:text="${customer.email}">Email content</td>
+                <td th:align="center" th:text="${customer.phoneNumber}">Phone number content</td>
+            </tr>
+        </tbody>
     </table>
+    <hr>
 
-    <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.customer.CustomerMappings).CUSTOMERS_LIST}__}">Back to Customers List</a>
+    <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.customer.CustomerMappings).CUSTOMERS_LIST}__}"
+       class="btn btn-link">Back to Customers List</a>
 </div>
 </body>
 </html>
