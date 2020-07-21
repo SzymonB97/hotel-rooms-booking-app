@@ -6,14 +6,21 @@
 </head>
 <body>
 <div align="center">
+
+    <h2>Rooms list</h2>
+    <!--Add button-->
+    <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.Mappings).ROOM_FORM_SAVE}__}">
+        Add Room
+    </a>
+
     <table border="2.5" cellpadding="5">
-        <caption><h2>Rooms list</h2></caption>
 
         <tr>
             <th>Id</th>
             <th>Room number</th>
             <th>People amount</th>
             <th>Rental cost</th>
+            <th>Actions</th>
         </tr>
 
         <tr th:each="room : ${rooms}">
@@ -21,8 +28,27 @@
             <td th:align="center" th:text="${room.roomNumber}">Room number content</td>
             <td th:align="center" th:text="${room.peopleAmount}">People amount content</td>
             <td th:align="center" th:text="${room.rentalCost}">Rental cost content</td>
+            <td>
+                <!--Info button-->
+                <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.Mappings).ROOM}__(roomId=${room.id})}">
+                    Info
+                </a>
+
+                <!--Update button-->
+                <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.Mappings).ROOM_FORM_UPDATE}__(roomId=${room.id})}">
+                    Update
+                </a>
+
+                <!--Delete button-->
+                <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.Mappings).ROOM_DELETE}__(roomId=${room.id})}"
+                   onclick="if (!(confirm('Are you sure you want to delete this room?'))) return false">
+                    Delete
+                </a>
+            </td>
         </tr>
     </table>
+
+    <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.Mappings).CUSTOMERS}__}">Go to Customers List</a>
 </div>
 </body>
 </html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Room Info</title>
+</head>
+<body>
+<div align="center">
+    <table border="2.5" cellpadding="5">
+        <caption><h2>Room info</h2></caption>
+
+        <tr>
+            <th>Id</th>
+            <th>Room number</th>
+            <th>People amount</th>
+            <th>Rental cost</th>
+        </tr>
+
+        <tr>
+            <td th:align="center" th:text="${room.id}">Id content</td>
+            <td th:align="center" th:text="${room.roomNumber}">Room number content</td>
+            <td th:align="center" th:text="${room.peopleAmount}">People amount content</td>
+            <td th:align="center" th:text="${room.rentalCost}">Rental cost content</td>
+        </tr>
+    </table>
+
+    <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.Mappings).ROOMS}__}">Back to Rooms List</a>
+</div>
+</body>
+</html>
