@@ -6,9 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.sborowy.hotelroomsbookingapp.entity.Room;
 import pl.sborowy.hotelroomsbookingapp.service.RoomService;
-import pl.sborowy.hotelroomsbookingapp.util.AttributeNames;
-import pl.sborowy.hotelroomsbookingapp.util.Mappings;
-import pl.sborowy.hotelroomsbookingapp.util.ViewNames;
+import pl.sborowy.hotelroomsbookingapp.util.room.RoomAttributeNames;
+import pl.sborowy.hotelroomsbookingapp.util.room.RoomMappings;
+import pl.sborowy.hotelroomsbookingapp.util.room.RoomViewNames;
 
 @Controller
 public class RoomController {
@@ -23,50 +23,50 @@ public class RoomController {
     }
 
     // --get methods--
-    @GetMapping(Mappings.ROOMS)
+    @GetMapping(RoomMappings.ROOMS_LIST)
     public String listRooms(Model model) {
-        model.addAttribute(AttributeNames.ROOMS, roomService.findAll());
+        model.addAttribute(RoomAttributeNames.ROOMS, roomService.findAll());
 
-        return ViewNames.ROOMS_LIST;
+        return RoomViewNames.ROOMS_LIST;
     }
 
-    @GetMapping(Mappings.ROOM)
-    public String getRoom(@RequestParam("roomId") int id, Model model) {
+    @GetMapping(RoomMappings.ROOM_GET)
+    public String getRoom(@RequestParam(RoomAttributeNames.ROOM_ID) int id, Model model) {
         Room room = roomService.findById(id);
-        model.addAttribute(AttributeNames.ROOM, room);
+        model.addAttribute(RoomAttributeNames.ROOM, room);
 
-        return ViewNames.ROOM;
+        return RoomViewNames.ROOM;
     }
 
-    @GetMapping(Mappings.ROOM_DELETE)
-    public String deleteRoom(@RequestParam("roomId") int id) {
+    @GetMapping(RoomMappings.ROOM_DELETE)
+    public String deleteRoom(@RequestParam(RoomAttributeNames.ROOM_ID) int id) {
         roomService.deleteById(id);
 
-        return "redirect:" + Mappings.ROOMS;
+        return "redirect:" + RoomMappings.ROOMS_LIST;
     }
 
-    @GetMapping(Mappings.ROOM_FORM_SAVE)
+    @GetMapping(RoomMappings.ROOM_FORM_SAVE)
     public String showFormForSaveRoom(Model model) {
         // model attribute to bind form data
         Room room = new Room();
-        model.addAttribute(AttributeNames.ROOM, room);
+        model.addAttribute(RoomAttributeNames.ROOM, room);
 
-        return ViewNames.ROOM_FORM;
+        return RoomViewNames.ROOM_FORM;
     }
 
-    @GetMapping(Mappings.ROOM_FORM_UPDATE)
-    public String showFormForUpdateRoom(@RequestParam("roomId") int id, Model model) {
+    @GetMapping(RoomMappings.ROOM_FORM_UPDATE)
+    public String showFormForUpdateRoom(@RequestParam(RoomAttributeNames.ROOM_ID) int id, Model model) {
         Room room = roomService.findById(id);
-        model.addAttribute(AttributeNames.ROOM, room);
+        model.addAttribute(RoomAttributeNames.ROOM, room);
 
-        return ViewNames.ROOM_FORM;
+        return RoomViewNames.ROOM_FORM;
     }
 
     // --post methods--
-    @PostMapping(Mappings.ROOM_SAVE)
-    public String saveRoom(@ModelAttribute(AttributeNames.ROOM) Room room) {
+    @PostMapping(RoomMappings.ROOM_SAVE)
+    public String saveRoom(@ModelAttribute(RoomAttributeNames.ROOM) Room room) {
         roomService.save(room);
 
-        return "redirect:" + Mappings.ROOMS;
+        return "redirect:" + RoomMappings.ROOMS_LIST;
     }
 }

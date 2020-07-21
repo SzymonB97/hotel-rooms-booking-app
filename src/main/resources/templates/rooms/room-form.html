@@ -7,7 +7,7 @@
 <body>
 <h3>Add/Update Room</h3>
 
-<form action="#" th:action="@{__${T(pl.sborowy.hotelroomsbookingapp.util.Mappings).ROOM_SAVE}__}"
+<form action="#" th:action="@{__${T(pl.sborowy.hotelroomsbookingapp.util.room.RoomMappings).ROOM_SAVE}__}"
       th:object="${room}" method="post">
     <!--Hidden id field to handle also updates-->
     <input type="hidden" th:field="*{id}">
@@ -24,6 +24,6 @@
     <button type="submit">Save</button>
 </form>
 
-<a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.Mappings).ROOMS}__}">Back to Rooms List</a>
+<a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.room.RoomMappings).ROOMS_LIST}__}">Back to Rooms List</a>
 </body>
 </html>

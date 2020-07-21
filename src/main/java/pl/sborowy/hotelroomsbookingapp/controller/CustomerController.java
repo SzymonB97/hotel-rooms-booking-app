@@ -6,9 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.sborowy.hotelroomsbookingapp.entity.Customer;
 import pl.sborowy.hotelroomsbookingapp.service.CustomerService;
-import pl.sborowy.hotelroomsbookingapp.util.AttributeNames;
-import pl.sborowy.hotelroomsbookingapp.util.Mappings;
-import pl.sborowy.hotelroomsbookingapp.util.ViewNames;
+import pl.sborowy.hotelroomsbookingapp.util.customer.CustomerViewNames;
+import pl.sborowy.hotelroomsbookingapp.util.customer.CustomerAttributeNames;
+import pl.sborowy.hotelroomsbookingapp.util.customer.CustomerMappings;
 
 @Controller
 public class CustomerController {
@@ -23,50 +23,50 @@ public class CustomerController {
     }
 
     // --get methods--
-    @GetMapping(Mappings.CUSTOMERS)
+    @GetMapping(CustomerMappings.CUSTOMERS_LIST)
     public String listCustomers(Model model) {
-        model.addAttribute(AttributeNames.CUSTOMERS, customerService.findAll());
+        model.addAttribute(CustomerAttributeNames.CUSTOMERS, customerService.findAll());
 
-        return ViewNames.CUSTOMERS_LIST;
+        return CustomerViewNames.CUSTOMERS_LIST;
     }
 
-    @GetMapping(Mappings.CUSTOMER)
-    public String getCustomer(@RequestParam("customerId") int id, Model model) {
+    @GetMapping(CustomerMappings.CUSTOMER_GET)
+    public String getCustomer(@RequestParam(CustomerAttributeNames.CUSTOMER_ID) int id, Model model) {
         Customer customer = customerService.findById(id);
-        model.addAttribute(AttributeNames.CUSTOMER, customer);
+        model.addAttribute(CustomerAttributeNames.CUSTOMER, customer);
 
-        return ViewNames.CUSTOMER;
+        return CustomerViewNames.CUSTOMER;
     }
 
-    @GetMapping(Mappings.CUSTOMER_DELETE)
-    public String deleteCustomer(@RequestParam("customerId") int id) {
+    @GetMapping(CustomerMappings.CUSTOMER_DELETE)
+    public String deleteCustomer(@RequestParam(CustomerAttributeNames.CUSTOMER_ID) int id) {
         customerService.deleteById(id);
 
-        return "redirect:" + Mappings.CUSTOMERS;
+        return "redirect:" + CustomerMappings.CUSTOMERS_LIST;
     }
 
-    @GetMapping(Mappings.CUSTOMER_FORM_SAVE)
+    @GetMapping(CustomerMappings.CUSTOMER_FORM_SAVE)
     public String showFormForSaveCustomer(Model model) {
         // model attribute to bind form data
         Customer customer = new Customer();
-        model.addAttribute(AttributeNames.CUSTOMER, customer);
+        model.addAttribute(CustomerAttributeNames.CUSTOMER, customer);
 
-        return ViewNames.CUSTOMER_FORM;
+        return CustomerViewNames.CUSTOMER_FORM;
     }
 
-    @GetMapping(Mappings.CUSTOMER_FORM_UPDATE)
-    public String showFormForUpdateCustomer(@RequestParam("customerId") int id, Model model) {
+    @GetMapping(CustomerMappings.CUSTOMER_FORM_UPDATE)
+    public String showFormForUpdateCustomer(@RequestParam(CustomerAttributeNames.CUSTOMER_ID) int id, Model model) {
         Customer customer = customerService.findById(id);
-        model.addAttribute(AttributeNames.CUSTOMER, customer);
+        model.addAttribute(CustomerAttributeNames.CUSTOMER, customer);
 
-        return ViewNames.CUSTOMER_FORM;
+        return CustomerViewNames.CUSTOMER_FORM;
     }
 
     // --post methods--
-    @PostMapping(Mappings.CUSTOMER_SAVE)
-    public String saveCustomer(@ModelAttribute(AttributeNames.CUSTOMER) Customer customer) {
+    @PostMapping(CustomerMappings.CUSTOMER_SAVE)
+    public String saveCustomer(@ModelAttribute(CustomerAttributeNames.CUSTOMER) Customer customer) {
         customerService.save(customer);
 
-        return "redirect:" + Mappings.CUSTOMERS;
+        return "redirect:" + CustomerMappings.CUSTOMERS_LIST;
     }
 }

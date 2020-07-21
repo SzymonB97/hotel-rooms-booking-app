@@ -9,7 +9,7 @@
 
     <h2>Customers list</h2>
     <!--Add button-->
-    <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.Mappings).CUSTOMER_FORM_SAVE}__}">
+    <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.customer.CustomerMappings).CUSTOMER_FORM_SAVE}__}">
         Add Customer
     </a>
 
@@ -32,17 +32,17 @@
             <td th:align="center" th:text="${customer.phoneNumber}">Phone number content</td>
             <td>
                 <!--Info button-->
-                <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.Mappings).CUSTOMER}__(customerId=${customer.id})}">
+                <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.customer.CustomerMappings).CUSTOMER_GET}__(customerId=${customer.id})}">
                     Info
                 </a>
 
                 <!--Update button-->
-                <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.Mappings).CUSTOMER_FORM_UPDATE}__(customerId=${customer.id})}">
+                <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.customer.CustomerMappings).CUSTOMER_FORM_UPDATE}__(customerId=${customer.id})}">
                     Update
                 </a>
 
                 <!--Delete button-->
-                <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.Mappings).CUSTOMER_DELETE}__(customerId=${customer.id})}"
+                <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.customer.CustomerMappings).CUSTOMER_DELETE}__(customerId=${customer.id})}"
                    onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">
                     Delete
                 </a>
@@ -50,7 +50,7 @@
         </tr>
     </table>
 
-    <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.Mappings).ROOMS}__}">Go to Rooms List</a>
+    <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.room.RoomMappings).ROOMS_LIST}__}">Go to Rooms List</a>
 </div>
 </body>
 </html>
