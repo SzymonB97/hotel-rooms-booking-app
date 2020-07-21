@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add/Update Customer</title>
+</head>
+<body>
+<h3>Add/Update Customer</h3>
+
+<form action="#" th:action="@{__${T(pl.sborowy.hotelroomsbookingapp.util.Mappings).CUSTOMER_SAVE}__}"
+      th:object="${customer}" method="post">
+    <!--Hidden id field to handle also updates-->
+    <input type="hidden" th:field="*{id}">
+
+    <h4>First name</h4>
+    <input type="text" th:field="*{firstName}" placeholder="First name">
+
+    <h4>Last name</h4>
+    <input type="text" th:field="*{lastName}" placeholder="Last name">
+
+    <h4>Email</h4>
+    <input type="email" th:field="*{email}" placeholder="Email">
+
+    <h4>Phone number</h4>
+    <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"
+           th:field="*{phoneNumber}" placeholder="Phone number">
+
+    <button type="submit">Save</button>
+</form>
+
+<a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.Mappings).CUSTOMERS}__}">Back to Customers List</a>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add/Update Room</title>
+</head>
+<body>
+<h3>Add/Update Room</h3>
+
+<form action="#" th:action="@{__${T(pl.sborowy.hotelroomsbookingapp.util.Mappings).ROOM_SAVE}__}"
+      th:object="${room}" method="post">
+    <!--Hidden id field to handle also updates-->
+    <input type="hidden" th:field="*{id}">
+
+    <h4>Room number</h4>
+    <input type="text" th:field="*{roomNumber}" placeholder="Room number">
+
+    <h4>People amount</h4>
+    <input type="number" th:field="*{peopleAmount}" placeholder="People amount">
+
+    <h4>Rental cost</h4>
+    <input type="number" step=".01" th:field="*{rentalCost}" placeholder="Rental cost">
+
+    <button type="submit">Save</button>
+</form>
+
+<a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.Mappings).ROOMS}__}">Back to Rooms List</a>
+</body>
+</html>
