@@ -1,41 +1,50 @@
 package pl.sborowy.hotelroomsbookingapp.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.sborowy.hotelroomsbookingapp.model.Customer;
-import pl.sborowy.hotelroomsbookingapp.repository.CustomerRepository;
+import pl.sborowy.hotelroomsbookingapp.entity.Customer;
+import pl.sborowy.hotelroomsbookingapp.dao.CustomerRepository;
 import pl.sborowy.hotelroomsbookingapp.service.CustomerService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
     // --fields--
-    private final CustomerRepository customerRepository = new CustomerRepository();
+    private final CustomerRepository customerRepository;
+
+    // --constructors--
+    @Autowired
+    public CustomerServiceImpl(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
 
     // --public methods--
     @Override
-    public void addCustomer(Customer newCustomer) {
-        customerRepository.addCustomer(newCustomer);
+    public void save(Customer newCustomer) {
+        customerRepository.save(newCustomer);
     }
 
     @Override
-    public void updateCustomer(Customer updateCustomer) {
-        customerRepository.updateCustomer(updateCustomer);
+    public Customer findById(int id) {
+        Optional<Customer> optionalCustomer = customerRepository.findById(id);
+
+        if (optionalCustomer.isPresent()) {
+            return optionalCustomer.get();
+        } else {
+            throw new NullPointerException("Customer with id " + id + " doesn't exists!");
+        }
     }
 
     @Override
-    public void removeCustomer(int id) {
-        customerRepository.removeCustomer(id);
+    public void deleteById(int id) {
+        customerRepository.deleteById(id);
     }
 
     @Override
-    public List<Customer> getCustomersList() {
-        return customerRepository.getCustomers();
-    }
-
-    @Override
-    public Customer getCustomer(int id) {
-        return customerRepository.getCustomer(id);
+    public List<Customer> findAll() {
+        return customerRepository.findAll();
     }
 }

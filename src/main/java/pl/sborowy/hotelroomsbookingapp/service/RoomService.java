@@ -1,19 +1,17 @@
 package pl.sborowy.hotelroomsbookingapp.service;
 
 import lombok.NonNull;
-import pl.sborowy.hotelroomsbookingapp.model.Room;
+import pl.sborowy.hotelroomsbookingapp.entity.Room;
 
 import java.util.List;
 
 public interface RoomService {
 
-    void addRoom(@NonNull Room newRoom);
+    void save(@NonNull Room newRoom);
 
-    void updateRoom(@NonNull Room updateRoom);
+    Room findById(int id);
 
-    void removeRoom(int id);
+    void deleteById(int id);
 
-    List<Room> getRoomsList();
-
-    Room getRoom(int id);
+    List<Room> findAll();
 }

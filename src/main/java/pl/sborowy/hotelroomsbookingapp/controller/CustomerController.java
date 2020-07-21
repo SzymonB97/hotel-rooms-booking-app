@@ -24,7 +24,7 @@ public class CustomerController {
     // --request methods--
     @GetMapping(Mappings.CUSTOMERS)
     public String customers(Model model) {
-        model.addAttribute(AttributeNames.CUSTOMERS, customerService.getCustomersList());
+        model.addAttribute(AttributeNames.CUSTOMERS, customerService.findAll());
 
         return ViewNames.CUSTOMERS_LIST;
     }

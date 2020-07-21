@@ -5,26 +5,24 @@
     <title>Rooms List</title>
 </head>
 <body>
-    <div align="center">
-        <table border="2.5" cellpadding="5">
-            <caption><h2>Rooms list</h2></caption>
+<div align="center">
+    <table border="2.5" cellpadding="5">
+        <caption><h2>Rooms list</h2></caption>
 
-            <tr>
-                <th>Id</th>
-                <th>Number</th>
-                <th>Number of people</th>
-                <th>Cost per day</th>
-                <th>Available</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Room number</th>
+            <th>People amount</th>
+            <th>Rental cost</th>
+        </tr>
 
-            <tr th:each="room : ${rooms}">
-                <td th:align="center" th:text="${room.id}">Id content</td>
-                <td th:align="center" th:text="${room.number}">Number content</td>
-                <td th:align="center" th:text="${room.numberOfPeople}">Number of people content</td>
-                <td th:align="center" th:text="${room.costPerDay}">Cost per day content</td>
-                <td th:align="center" th:text="${room.isAvailable()} ? 'Yes' : 'No'">Available content</td>
-            </tr>
-        </table>
-    </div>
+        <tr th:each="room : ${rooms}">
+            <td th:align="center" th:text="${room.id}">Id content</td>
+            <td th:align="center" th:text="${room.roomNumber}">Room number content</td>
+            <td th:align="center" th:text="${room.peopleAmount}">People amount content</td>
+            <td th:align="center" th:text="${room.rentalCost}">Rental cost content</td>
+        </tr>
+    </table>
+</div>
 </body>
 </html>

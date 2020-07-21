@@ -24,7 +24,7 @@ public class RoomController {
     // --request methods--
     @GetMapping(Mappings.ROOMS)
     public String rooms(Model model) {
-        model.addAttribute(AttributeNames.ROOMS, roomService.getRoomsList());
+        model.addAttribute(AttributeNames.ROOMS, roomService.findAll());
 
         return ViewNames.ROOMS_LIST;
     }

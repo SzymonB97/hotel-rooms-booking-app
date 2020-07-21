@@ -1,19 +1,17 @@
 package pl.sborowy.hotelroomsbookingapp.service;
 
 import lombok.NonNull;
-import pl.sborowy.hotelroomsbookingapp.model.Customer;
+import pl.sborowy.hotelroomsbookingapp.entity.Customer;
 
 import java.util.List;
 
 public interface CustomerService {
 
-    void addCustomer(@NonNull Customer newCustomer);
+    void save(@NonNull Customer newCustomer);
 
-    void updateCustomer(@NonNull Customer updateCustomer);
+    Customer findById(int id);
 
-    void removeCustomer(int id);
+    void deleteById(int id);
 
-    List<Customer> getCustomersList();
-
-    Customer getCustomer(int id);
+    List<Customer> findAll();
 }
