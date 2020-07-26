@@ -20,30 +20,29 @@ public class Room {
     @Column(name = "id")
     private int id;
 
+    @Column(name = "floor")
+    private String floor;
+
     @Column(name = "room_number")
     private String roomNumber;
 
     @Column(name = "people_amount")
     private int peopleAmount;
 
-    @Column(name = "rental_cost")
-    private double rentalCost;
+    @Column(name = "cost_per_night")
+    private double costPerNight;
 
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE,
-                    CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinTable(name = "bookings",
-            joinColumns = @JoinColumn(name = "room_id"),
-            inverseJoinColumns = @JoinColumn(name = "customer_id"))
-    private List<Customer> customers;
+    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
+    private List<Booking> bookings;
 
     // --constructors--
     public Room() {
     }
 
-    public Room(String roomNumber, int peopleAmount, double rentalCost) {
+    public Room(String floor, String roomNumber, int peopleAmount, double costPerNight) {
+        this.floor = floor;
         this.roomNumber = roomNumber;
         this.peopleAmount = peopleAmount;
-        this.rentalCost = rentalCost;
+        this.costPerNight = costPerNight;
     }
 }

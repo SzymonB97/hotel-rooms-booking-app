@@ -30,13 +30,8 @@ public class Customer {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE,
-                    CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinTable(name = "bookings",
-            joinColumns = @JoinColumn(name = "customer_id"),
-            inverseJoinColumns = @JoinColumn(name = "room_id"))
-    private List<Room> rooms;
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<Booking> bookings;
 
     // --constructors--
     public Customer() {
