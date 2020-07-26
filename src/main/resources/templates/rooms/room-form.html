@@ -24,14 +24,17 @@
         <!--Hidden id field to handle also updates-->
         <input type="hidden" th:field="*{id}">
 
+        <input type="text" th:field="*{floor}"
+               class="form-control mb-4 col-4" placeholder="Floor">
+
         <input type="text" th:field="*{roomNumber}"
                class="form-control mb-4 col-4" placeholder="Room number">
 
         <input type="number" th:field="*{peopleAmount}"
                class="form-control mb-4 col-4" placeholder="People amount">
 
-        <input type="number" step=".01" th:field="*{rentalCost}"
-               class="form-control mb-4 col-4" placeholder="Rental cost">
+        <input type="number" step=".01" th:field="*{costPerNight}"
+               class="form-control mb-4 col-4" placeholder="Cost per night">
 
         <button type="submit" class="btn btn-success">Save</button>
     </form>

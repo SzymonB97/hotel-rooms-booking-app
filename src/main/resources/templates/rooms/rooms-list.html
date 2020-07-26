@@ -30,9 +30,10 @@
         <thead class="thead-dark">
             <tr>
                 <th>Id</th>
+                <th>Floor</th>
                 <th>Room number</th>
                 <th>People amount</th>
-                <th>Rental cost</th>
+                <th>Cost per night</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -40,9 +41,10 @@
         <tbody>
             <tr th:each="room : ${rooms}">
                 <td th:align="center" th:text="${room.id}">Id content</td>
+                <td th:align="center" th:text="${room.floor}">Floor content</td>
                 <td th:align="center" th:text="${room.roomNumber}">Room number content</td>
                 <td th:align="center" th:text="${room.peopleAmount}">People amount content</td>
-                <td th:align="center" th:text="${room.rentalCost}">Rental cost content</td>
+                <td th:align="center" th:text="${room.costPerNight}">Cost per night content</td>
                 <td>
 
                     <!--Info button-->
