@@ -53,6 +53,12 @@
                         Info
                     </a>
 
+                    <!--Book button-->
+                    <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.booking.BookingMappings).BOOKING_FORM_SAVE}__(roomId=${room.id})}"
+                       class="btn btn-info">
+                        Book
+                    </a>
+
                     <!--Update button-->
                     <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.room.RoomMappings).ROOM_FORM_UPDATE}__(roomId=${room.id})}"
                        class="btn btn-warning">

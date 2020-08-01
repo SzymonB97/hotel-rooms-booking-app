@@ -3,9 +3,9 @@ package pl.sborowy.hotelroomsbookingapp.entity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 
 @Entity
@@ -13,7 +13,7 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-public class Booking implements Serializable {
+public class Booking {
 
     // --fields--
     @Id
@@ -23,10 +23,12 @@ public class Booking implements Serializable {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "start_date")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date startDate;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "end_date")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date endDate;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,

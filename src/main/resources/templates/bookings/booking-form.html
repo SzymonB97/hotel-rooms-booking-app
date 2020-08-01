@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Book a Room</title>
+</head>
+<body>
+<div class="container" align="center">
+
+    <h3 class="h3 mb-3">Book a Room</h3>
+    <hr>
+
+    <!--have to be change!!!-->
+    <form action="#"
+          th:action="@{__${T(pl.sborowy.hotelroomsbookingapp.util.booking.BookingMappings).BOOKING_SAVE}__}"
+          th:object="${booking}" method="post">
+
+        <input type="hidden" th:field="*{room.id}"/>
+
+        <input type="text" th:field="*{customer.firstName}"
+               class="form-control mb-4 col-4" placeholder="Customer first name">
+
+        <input type="text" th:field="*{customer.lastName}"
+               class="form-control mb-4 col-4" placeholder="Customer last name">
+
+        <input type="date" th:field="*{startDate}"
+               class="form-control mb-4 col-4" placeholder="Start date">
+
+        <input type="date" th:field="*{endDate}"
+               class="form-control mb-4 col-4" placeholder="End date">
+
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
+    <hr>
+
+    <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.room.RoomMappings).ROOMS_LIST}__}"
+       class="btn btn-link">Back to Rooms List</a>
+</div>
+</body>
+</html>

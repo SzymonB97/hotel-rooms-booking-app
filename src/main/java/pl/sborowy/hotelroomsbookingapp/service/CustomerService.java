@@ -14,4 +14,6 @@ public interface CustomerService {
     void deleteById(int id);
 
     List<Customer> findAll();
+
+    Customer findFirstByFirstNameAndLastName(String firstName, String lastName);
 }
