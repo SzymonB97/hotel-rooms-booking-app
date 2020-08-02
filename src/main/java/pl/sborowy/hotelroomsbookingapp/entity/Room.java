@@ -32,6 +32,11 @@ public class Room {
     @Column(name = "cost_per_night")
     private double costPerNight;
 
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
+            CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name = "room_type_id")
+    private RoomType roomType;
+
     @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
     private List<Booking> bookings;
 

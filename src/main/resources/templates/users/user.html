@@ -9,16 +9,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <title>Customer Info</title>
+    <title>User Info</title>
 </head>
 <body>
 <div class="container" align="center">
 
-    <h3 class="h3 mb-3">Customer Info</h3>
+    <h3 class="h3 mb-3">User Info</h3>
     <hr>
 
     <table class="table table-striped">
-        <caption>Customer info</caption>
+        <caption>User info</caption>
 
         <thead class="thead-dark">
             <tr>
@@ -32,18 +32,18 @@
 
         <tbody>
             <tr>
-                <td th:align="center" th:text="${customer.id}">Id content</td>
-                <td th:align="center" th:text="${customer.firstName}">First name content</td>
-                <td th:align="center" th:text="${customer.lastName}">Last name content</td>
-                <td th:align="center" th:text="${customer.email}">Email content</td>
-                <td th:align="center" th:text="${customer.phoneNumber}">Phone number content</td>
+                <td th:align="center" th:text="${user.id}">Id content</td>
+                <td th:align="center" th:text="${user.firstName}">First name content</td>
+                <td th:align="center" th:text="${user.lastName}">Last name content</td>
+                <td th:align="center" th:text="${user.email}">Email content</td>
+                <td th:align="center" th:text="${user.phoneNumber}">Phone number content</td>
             </tr>
         </tbody>
     </table>
     <hr>
 
-    <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.customer.CustomerMappings).CUSTOMERS_LIST}__}"
-       class="btn btn-link">Back to Customers List</a>
+    <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.user.UserMappings).USERS_LIST}__}"
+       class="btn btn-link">Back to Users List</a>
 </div>
 </body>
 </html>

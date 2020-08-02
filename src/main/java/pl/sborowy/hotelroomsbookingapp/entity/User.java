@@ -7,10 +7,10 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "customers")
+@Table(name = "users")
 @Getter
 @Setter
-public class Customer {
+public class User {
 
     // --fields--
     @Id
@@ -30,17 +30,26 @@ public class Customer {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @Column(name = "password")
+    private String password;
+
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
+            CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name = "user_role_id")
+    private UserRole userRole;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Booking> bookings;
 
     // --constructors--
-    public Customer() {
+    public User() {
     }
 
-    public Customer(String firstName, String lastName, String email, String phoneNumber) {
+    public User(String firstName, String lastName, String email, String phoneNumber, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.password = password;
     }
 }

@@ -10,7 +10,7 @@ public class RoomViewNames {
     public static final String ROOM = ROOMS_BASE_DIRECTORY + "room";
     public static final String ROOM_FORM = ROOMS_BASE_DIRECTORY + "room-form";
 
-    // --constructors
+    // --constructors--
     private RoomViewNames() {
     }
 }

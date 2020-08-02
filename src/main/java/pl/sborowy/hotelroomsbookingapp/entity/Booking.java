@@ -5,7 +5,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 
 @Entity
@@ -13,7 +12,7 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-public class Booking implements Serializable {
+public class Booking {
 
     // --fields--
     @Id
@@ -36,8 +35,8 @@ public class Booking implements Serializable {
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+    @JoinColumn(name = "user_id")
+    private User user;
 
     // --constructors--
     public Booking() {

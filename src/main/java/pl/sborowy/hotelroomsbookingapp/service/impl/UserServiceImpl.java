@@ -2,34 +2,34 @@ package pl.sborowy.hotelroomsbookingapp.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.sborowy.hotelroomsbookingapp.entity.Customer;
-import pl.sborowy.hotelroomsbookingapp.dao.CustomerRepository;
-import pl.sborowy.hotelroomsbookingapp.service.CustomerService;
+import pl.sborowy.hotelroomsbookingapp.entity.User;
+import pl.sborowy.hotelroomsbookingapp.dao.UserRepository;
+import pl.sborowy.hotelroomsbookingapp.service.UserService;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CustomerServiceImpl implements CustomerService {
+public class UserServiceImpl implements UserService {
 
     // --fields--
-    private final CustomerRepository customerRepository;
+    private final UserRepository customerRepository;
 
     // --constructors--
     @Autowired
-    public CustomerServiceImpl(CustomerRepository customerRepository) {
+    public UserServiceImpl(UserRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
 
     // --public methods--
     @Override
-    public void save(Customer newCustomer) {
+    public void save(User newCustomer) {
         customerRepository.save(newCustomer);
     }
 
     @Override
-    public Customer findById(int id) {
-        Optional<Customer> optionalCustomer = customerRepository.findById(id);
+    public User findById(int id) {
+        Optional<User> optionalCustomer = customerRepository.findById(id);
 
         if (optionalCustomer.isPresent()) {
             return optionalCustomer.get();
@@ -44,7 +44,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<Customer> findAll() {
+    public List<User> findAll() {
         return customerRepository.findAll();
     }
 }

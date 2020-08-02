@@ -9,17 +9,17 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <title>Add/Update Customer</title>
+    <title>Add/Update User</title>
 </head>
 <body>
 <div class="container" align="center">
 
-    <h3 class="h3 mb-3">Add/Update Customer</h3>
+    <h3 class="h3 mb-3">Add/Update User</h3>
     <hr>
 
     <form action="#"
-          th:action="@{__${T(pl.sborowy.hotelroomsbookingapp.util.customer.CustomerMappings).CUSTOMER_SAVE}__}"
-          th:object="${customer}" method="post">
+          th:action="@{__${T(pl.sborowy.hotelroomsbookingapp.util.user.UserMappings).USER_SAVE}__}"
+          th:object="${user}" method="post">
 
         <!--Hidden id field to handle also updates-->
         <input type="hidden" th:field="*{id}">
@@ -41,8 +41,8 @@
     </form>
     <hr>
 
-    <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.customer.CustomerMappings).CUSTOMERS_LIST}__}"
-       class="btn btn-link">Back to Customers List</a>
+    <a th:href="@{__${T(pl.sborowy.hotelroomsbookingapp.util.user.UserMappings).USERS_LIST}__}"
+       class="btn btn-link">Back to Users List</a>
 </div>
 </body>
 </html>
